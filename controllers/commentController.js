@@ -7,7 +7,7 @@ const addComment = async (req, res) => {
 
   let data = {
     post_id: id,
-    username: req.body.username,
+    usernama: req.body.usernama,
     text: req.body.text,
   };
 

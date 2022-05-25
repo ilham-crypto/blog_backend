@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define("comment", {
-    username: {
+    usernama: {
       type: DataTypes.STRING,
     },
     text: {

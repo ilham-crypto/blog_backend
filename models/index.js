@@ -29,7 +29,7 @@ db.sequelize.sync({ force: false }).then(() => {
   console.log("yes re-sync done!");
 });
 
-// One to Many
+// One to Many post - comment
 db.post.hasMany(db.comment, {
   foreignKey: "post_id",
   as: "comment",
@@ -40,8 +40,7 @@ db.comment.belongsTo(db.post, {
   as: "post",
 });
 
-
-//one to many
+//one to many post-category
 db.category.hasMany(db.post, {
   foreignKey: "category_id",
   as: "post",

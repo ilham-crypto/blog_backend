@@ -58,6 +58,7 @@ const findAll = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
   let post = await Post.findAll({
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: Category,
