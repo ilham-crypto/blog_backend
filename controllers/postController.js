@@ -43,7 +43,19 @@ const findAll = async (req, res) => {
 
   const { limit, offset } = getPagination(page, size);
 
-  Post.findAndCountAll({ where: condition, limit, offset })
+  Post.findAndCountAll({
+    where: condition,
+    limit,
+    offset,
+    order: [["created_at", "DESC"]],
+    include: [
+      {
+        model: Category,
+        as: "category",
+        attributes: ["id", "name"],
+      },
+    ],
+  })
     .then((data) => {
       const response = getPagingData(data, page, limit);
       res.send(response);
@@ -116,6 +128,10 @@ const getPostComment = async (req, res) => {
       {
         model: Comment,
         as: "comment",
+      },
+      {
+        model: Category,
+        as: "category",
       },
     ],
     where: { id: id },

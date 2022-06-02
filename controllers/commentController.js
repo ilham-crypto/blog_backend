@@ -16,7 +16,14 @@ const addComment = async (req, res) => {
 };
 
 const getAllComments = async (req, res) => {
-  const comments = await Comment.findAll({});
+  const comments = await Comment.findAll({
+    include: [
+      {
+        model: Post,
+        as: "post",
+      },
+    ],
+  });
   res.status(200).send(comments);
 };
 

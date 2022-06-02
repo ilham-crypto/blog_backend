@@ -14,6 +14,7 @@ const addCategories = async (req, res) => {
 
 const getAllCategories = async (req, res) => {
   let category = await Category.findAll({
+    order: [["createdAt", "DESC"]],
     include: [
       {
         model: Post,
